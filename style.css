@@ -1,0 +1,122 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('blue.gif') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    color: gold; /* Set default text color to gold */
+}
+
+/* Container for the Tic-Tac-Toe game and controls */
+.tic-tac-toe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+   
+}
+
+/* Hide elements with the 'hidden' class */
+.hidden {
+    display: none;
+}
+
+/* Board styling with responsive grid */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    width: 80vmin; /* Width is based on the smaller viewport dimension */
+    height: 80vmin; /* Height is based on the smaller viewport dimension */
+    max-width: 600px; /* Maximum width for larger screens */
+    max-height: 600px; /* Maximum height for larger screens */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Cell styling with responsive size */
+.cell {
+    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Light border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+    color: gold; /* Set text color to gold */
+    backdrop-filter: blur(8px); /* Glass effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: relative; /* Ensure the pseudo-element is positioned relative to the cell */
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+/* Cell content wrapper to prevent zooming effect */
+.cell-content {
+    position: absolute; /* Position content inside cell */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hover effect for cells */
+.cell:hover {
+    border-color: rgba(255, 255, 255, 0.5); /* Darker border on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Animation for active cells */
+.cell.active {
+    animation: pop 0.3s ease-out;
+}
+
+/* Pop animation */
+@keyframes pop {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Buttons styling */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #4e54c8;
+    color: gold; /* Set button text color to gold */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 10px; /* Add margin to separate buttons */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #8f94fb;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .board {
+        width: 90vmin; /* Adjust for smaller screens */
+        height: 90vmin; /* Adjust for smaller screens */
+    }
+}
